@@ -8,7 +8,7 @@ try:
     print(v)
 except VideException as e:
     print(e)
-except Exception:
-    print("Grosse erreur")
+#except Exception:
+ #   print("Grosse erreur")
 finally :
     print("toujours éxécuté")

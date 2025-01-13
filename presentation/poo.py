@@ -23,7 +23,7 @@ class Vehicule(ABC):
         if valeur != "":
             self.__modele = valeur
         else:
-            raise VideException("modele")
+            raise VideException(self, "modele")
     
     @abstractmethod
     def demarrer(self):
