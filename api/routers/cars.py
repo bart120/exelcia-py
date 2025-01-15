@@ -5,6 +5,7 @@ from database import get_db
 from sqlalchemy.orm import Session
 from models import Car as CarModel
 
+
 router = APIRouter()
 
 @router.get("/", response_model=List[Car])
@@ -46,4 +47,4 @@ def delete_car(car_id:int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Car not found")
     db.delete(db_car)
     db.commit()
-    return Response(status=204)
+    return Response(status_code=204)

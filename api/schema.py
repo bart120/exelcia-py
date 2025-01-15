@@ -21,6 +21,23 @@ class CarParent(BaseModel):
 
 class Car(CarParent):
     id:int
+    full_name: str
     
 class CarCreate(CarParent):
     pass
+
+class RentalParentSchema(BaseModel):
+    start_date: datetime
+    end_date: datetime
+    total_cost: float
+    car_id: int
+
+class RentalDisplaySchema(RentalParentSchema):
+    id:int
+    car:Car
+    class Config:
+        orm_mode = True
+
+class RentalCreateSchema(RentalParentSchema):
+    pass
+
