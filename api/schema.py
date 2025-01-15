@@ -30,7 +30,6 @@ class RentalParentSchema(BaseModel):
     start_date: datetime
     end_date: datetime
     total_cost: float
-    car_id: int
 
 class RentalDisplaySchema(RentalParentSchema):
     id:int
@@ -39,5 +38,6 @@ class RentalDisplaySchema(RentalParentSchema):
         orm_mode = True
 
 class RentalCreateSchema(RentalParentSchema):
+    car_id: int
     pass
 

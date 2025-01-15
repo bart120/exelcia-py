@@ -4,12 +4,14 @@ from typing import List
 from database import get_db
 from sqlalchemy.orm import Session
 from models import Car as CarModel
+from auth import get_current_user, get_current_user_admin
 
-
-router = APIRouter()
+user_test = None
+router = APIRouter(dependencies=[Depends(get_current_user)])
 
 @router.get("/", response_model=List[Car])
-def get_cars(db: Session = Depends(get_db)): #récupère le yield de get_db dans database
+def get_cars(db: Session = Depends(get_db), user:dict = Depends(get_current_user_admin)): #récupère le yield de get_db dans database
+    print(user)
     db_cars = db.query(CarModel)
     return db_cars
 
